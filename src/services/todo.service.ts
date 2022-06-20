@@ -18,7 +18,6 @@ export class TodoService {
     return this.http.get(this.url + Endpoints.TODOS, {});
   }
   updateTodo(todo: Todo) {
-    console.log('todo:', todo)
     return this.http.put(this.url + Endpoints.TODO + '/' + todo.id, {
       label: todo.label,
       done: todo.done

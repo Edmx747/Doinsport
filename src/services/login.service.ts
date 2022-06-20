@@ -1,14 +1,16 @@
+import { Endpoints } from './../app/helpers/endpoints.enum';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-const BASE_URL = 'https://test.kmedini.fr/';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
+  public isAuthenticated = false;
+  private url = environment.url;
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    return this.http.post(BASE_URL + 'auth/signin', { username, password });
+    return this.http.post(this.url + Endpoints.AUTHENTICATION, { username, password });
   }
 }

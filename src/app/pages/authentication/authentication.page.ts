@@ -2,6 +2,7 @@ import { LoginService } from '../../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 const FORM_VALIDATION = {
   email: [
@@ -21,7 +22,8 @@ export class AuthenticationPage implements OnInit {
   public hidePassword = true;
   public email: string;
   public password: string;
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService,
+    private alertController: AlertController) { }
 
   ngOnInit() {
     this.createLoginForm();
@@ -45,16 +47,39 @@ export class AuthenticationPage implements OnInit {
       return;
     }
     this.loginService.login(this.email, this.password).subscribe(
-      (res: any) => {
+      async (res: any) => {
         if (res.accessToken){
           localStorage.setItem('accessToken', res.accessToken);
           localStorage.setItem('refreshToken', res.refreshToken);
+          this.loginService.isAuthenticated = true;
           this.router.navigate(['/home']);
+        } else {
+          this.crendentialAlert();
         }
+      },
+      (err: any) => {
+        this.crendentialAlert();
       }
     );
-
   }
+
+  async crendentialAlert(){
+    const alert = this.alertController.create({
+      header: 'Email ou Mot de passe invalide !',
+      message: 'Veuillez vérifier vos identifiants.',
+      buttons: [
+        {
+          text: 'Réessayer',
+          role: 'cancel',
+        }
+      ]
+    });
+    (await alert).present();
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    this.loginService.isAuthenticated = false;
+  }
+
   getError(fieldName: string): string | null {
     const field = this.loginForm.get(fieldName);
     if (!field) {
