@@ -18,8 +18,8 @@
           <ion-item>
             <ion-label class="" position="floating" [color]="getError('password') ? 'danger' : undefined">Mot de passe</ion-label>
             <div class="input">
-              <ion-input class="" formControlName="password" [type]="showPassword ? 'password' : 'text'" autocomplete="password"></ion-input>
-              <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" class="form-icon" (click)="showPassword = !showPassword"></ion-icon>              
+              <ion-input class="" formControlName="password" [type]="hidePassword ? 'password' : 'text'" autocomplete="password"></ion-input>
+              <ion-icon [name]="hidePassword ? 'eye-off' : 'eye'" class="form-icon" (click)="hidePassword = !hidePassword"></ion-icon>              
             </div>
           </ion-item>
           <div class="button-container">

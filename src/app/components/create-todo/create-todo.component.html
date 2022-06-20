@@ -1,0 +1,14 @@
+<ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-button defaultHref="" (click)="closeModal()">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>
+    Ajouter un TODO
+  </ion-title>
+</ion-toolbar>
+<div class="container">
+  <ion-textarea [(ngModel)]="todo" placeholder="Ajouter une nouvelle tâche à réaliser"></ion-textarea>
+  <ion-button expand="block" fill="solid" expand="block" color="primary" (click)="createTodo()">Enregistrer</ion-button>  
+</div>

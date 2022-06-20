@@ -1,0 +1,27 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="authentication" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title> Mes todos </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <div class="searchbar">
+      <ion-searchbar #searchBar showCancelButton="never" (animated)="true" placeholder="Rechercher..."></ion-searchbar>
+      <ion-button (click)="createTodo()">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>Nouveau</ion-label>
+      </ion-button>
+    </div>
+    <div class="datetime">
+      <ion-icon name="checkbox-outline"></ion-icon>
+      <ion-label>Sélectionner une période: 01/01/2021 - 31/12/2021</ion-label>
+    </div>
+  </div>
+  <div *ngFor="let todo of todos" >
+    {{todo.label}}
+  </div>
+</ion-content>

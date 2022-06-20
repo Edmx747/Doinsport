@@ -1,4 +1,4 @@
-import { LoginService } from './../../services/login.service';
+import { LoginService } from '../../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ const FORM_VALIDATION = {
 })
 export class AuthenticationPage implements OnInit {
   public loginForm: FormGroup;
-  public showPassword = false;
+  public hidePassword = true;
   public email: string;
   public password: string;
   constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) { }
