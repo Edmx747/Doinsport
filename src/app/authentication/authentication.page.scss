@@ -1,0 +1,69 @@
+.authentication {
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: #052b80 0% 0% no-repeat padding-box;
+  .container {
+    position: absolute;
+    top: 8vh;
+    height: calc(100% - 8vh);
+    width: 100%;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 5px 10px 20px #00000029;
+    border-radius: 40px 40px 0 0;
+    opacity: 1;
+    z-index: 1;
+    .logo{
+        height: 20vh;
+    }
+    .title{
+        display: flex;
+        flex-direction: column;
+        > * {
+            text-align: center;
+        }
+        h1{
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #052b80;
+        }
+        h2{
+            font-size: 1rem;
+            color: #4d4f5d;
+        }
+    }
+    .login-form{
+        margin: 0px 10vw 0 10vw;
+        display: flex;
+        justify-content: center;
+        .form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        ion-item{
+            display: flex;
+            align-items: center;
+            --padding-start: inherit;
+            color: #4d4f5d;
+            .input{
+                display: flex;
+                align-items: center;
+            }
+        }
+        .button-container{
+            margin-top: 20px;
+        }
+        .footer{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            ion-label {
+                color: #4d4f5d;
+                font-size: 0.6rem;
+            }
+        }
+    }
+  }
+}

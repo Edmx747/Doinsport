@@ -1,9 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>authentication</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="authentication">
+    <div class="container">
+      <ion-img class="logo" src="/assets/img/logo.png"></ion-img>
+      <div class="title">
+        <h1>Content de vous revoir !</h1>
+        <h2>connectez-vous à votre compte</h2>
+      </div>
+      <div class="login-form">
+        <form [formGroup]="loginForm" class="form" autocomplete="off">
+          <ion-item class="input-item">
+            <ion-label class="" position="floating" [color]="getError('email') ? 'danger' : undefined" >Email</ion-label>
+            <div class="input">
+              <ion-input class="" formControlName="email" type="text" ></ion-input>
+              <ion-icon slot="end" name="mail" class="form-icon"></ion-icon>              
+            </div>
+          </ion-item>
+          <ion-item>
+            <ion-label class="" position="floating" [color]="getError('password') ? 'danger' : undefined">Mot de passe</ion-label>
+            <div class="input">
+              <ion-input class="" formControlName="password" [type]="showPassword ? 'password' : 'text'" autocomplete="password"></ion-input>
+              <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" class="form-icon" (click)="showPassword = !showPassword"></ion-icon>              
+            </div>
+          </ion-item>
+          <div class="button-container">
+            <ion-button type="submit" expand="full" expand="block" color="primary" (click)="login()">Se connecter</ion-button>
+            <ion-button expand="full" fill="outline" expand="block" color="primary">S'inscrire</ion-button>
+          </div>
+          <div class="footer">
+            <div class="remember">
+              <ion-item lines="none">
+                <ion-checkbox  mode="md" color="primary" formControlName="remember"></ion-checkbox>  
+                <ion-label color="seconday">Se souvenir de moi</ion-label>              
+              </ion-item>
+            </div>
+            <div>
+              <ion-label color="secondary">Mot de passe oublié</ion-label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </ion-content>
