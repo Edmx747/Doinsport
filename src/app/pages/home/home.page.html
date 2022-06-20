@@ -21,7 +21,17 @@
       <ion-label>Sélectionner une période: 01/01/2021 - 31/12/2021</ion-label>
     </div>
   </div>
-  <div *ngFor="let todo of todos" >
-    {{todo.label}}
+  <div class="todo-list" *ngFor="let years of objectKeys(todosByMonth)">
+    <div *ngFor="let month of objectKeys(todosByMonth[years])">
+      <ion-label><b>{{month}} </b>{{years}}</ion-label>
+      <div class="todo-list-item" *ngFor="let todo of todos" >
+        <ion-checkbox  mode="md" color="success" (checked)="todo.done" (ionChange)="onCheckboxChange($event,todo)" #check></ion-checkbox>  
+        <ion-label [ngClass]="todo.done ? 'line' : ''">{{todo.label}}</ion-label>
+        <div>
+          <ion-icon name="calendar" color="secondary"></ion-icon>
+          <ion-label color="secondary">{{todo.createdAt | date:'dd/MM/yyyy'}}</ion-label>
+        </div>
+      </div>  
+    </div>  
   </div>
 </ion-content>

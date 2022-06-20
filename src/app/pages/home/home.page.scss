@@ -6,3 +6,15 @@
     width: 60%;
   }
 }
+.line {
+  text-decoration-line: line-through;
+}
+.todo-list{
+  margin: 20px;
+  &-item{
+    display: flex;
+    > * {
+      margin: 4px;
+    }
+  }
+}

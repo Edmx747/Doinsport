@@ -1,3 +1,4 @@
+import { Todo } from './../app/models/todo.interface';
 import { environment } from './../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,13 +12,17 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   createTodo(label: string) {
-    return this.http.post(this.url + Endpoints.TODO, {label});
+    return this.http.post(this.url + Endpoints.TODO, { label });
   }
   readTodo() {
     return this.http.get(this.url + Endpoints.TODOS, {});
   }
-  updateTodo() {
-
+  updateTodo(todo: Todo) {
+    console.log('todo:', todo)
+    return this.http.put(this.url + Endpoints.TODO + '/' + todo.id, {
+      label: todo.label,
+      done: todo.done
+    });
   }
   deleteTodo(id: string) {
 
